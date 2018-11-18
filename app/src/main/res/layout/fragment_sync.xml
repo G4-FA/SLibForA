@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/fragment_sync_SystemConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="sync_type: 1  sync_device: OnePlusV01" />
+
+    <TextView
+        android:id="@+id/fragment_sync_MaxCallhis_SLib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fragment_sync_MaxCallhis_SYS"
+        android:layout_below="@+id/fragment_sync_MaxCallhis_SYS"
+        android:layout_marginTop="16dp"
+        android:text="MAX_CALLHIS_SLIB: 1234567890" />
+
+    <Button
+        android:id="@+id/fragment_sync_SyncCallhis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_sync_MaxCallhis_SLib"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="SYNC" />
+
+    <Button
+        android:id="@+id/fragment_sync_SyncSMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fragment_sync_SyncCallhis"
+        android:layout_below="@+id/fragment_sync_MaxSMS_SLib"
+        android:layout_marginTop="16dp"
+        android:text="SYNC" />
+
+    <TextView
+        android:id="@+id/fragment_sync_MaxCallhis_SYS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_sync_SystemConfig"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="MAX_CALLHIS_SYS: 1234567890" />
+
+    <TextView
+        android:id="@+id/fragment_sync_MaxSMS_SLib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_sync_MaxSMS_SYS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="MAX_SMS_SLIB: 1234567890" />
+
+    <TextView
+        android:id="@+id/fragment_sync_MaxSMS_SYS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fragment_sync_MaxSMS_SLib"
+        android:layout_below="@+id/fragment_sync_SyncCallhis"
+        android:layout_marginTop="14dp"
+        android:text="MAX_SMS_SYS: 1234567890" />
+
+    <CheckBox
+        android:id="@+id/fragment_sync_B1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_sync_SyncSMS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="PHONE_STATE  Broadcast" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/fragment_sync_B1"
+        android:text="SQL" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/button2" />
+
+</RelativeLayout>

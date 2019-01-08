@@ -158,11 +158,6 @@ public class SLib_Sync {
         c.moveToFirst();
         do
         {
-        	if ( c.isNull(idx01) || c.isNull(idx03) || c.isNull(idx05)|| c.isNull(idx06) || c.isNull(idx10)|| c.isNull(idx13) )
-        	{
-        		throw new RuntimeException("syncAndroidSMSDB failed - Column is NULL");
-        	}
-        	
         	String a_id;
         	String a_thread_id;
         	String a_address;
@@ -198,6 +193,21 @@ public class SLib_Sync {
         	if (c.isNull(idx15)) a_locked				= "NULL";	else a_locked				= String.valueOf(c.getLong(idx15));
         	if (c.isNull(idx16)) a_error_code			= "NULL";	else a_error_code			= String.valueOf(c.getLong(idx16));
         	if (c.isNull(idx17)) a_seen					= "NULL";	else a_seen					= String.valueOf(c.getLong(idx17));
+
+			if ( c.isNull(idx01) || c.isNull(idx05)|| c.isNull(idx06) || c.isNull(idx10)|| c.isNull(idx13) )
+			{
+				throw new RuntimeException("syncAndroidSMSDB failed - Column is NULL");
+			}
+
+			if ( c.isNull(idx03) ) {
+				if ( a_type.equals("3") ) {
+					a_address = "'nil'"; //a_type:3 draft a_address can be null
+				}
+				else {
+					throw new RuntimeException("syncAndroidSMSDB failed - a_address is NULL");
+				}
+			}
+
         	
         	String strCheck = "SELECT rowid FROM t_sms WHERE a_id = %s AND sync_type = %s AND sync_device LIKE '%s'";
         	strCheck = String.format( strCheck, a_id, sys_sync_type, sys_sync_device );

@@ -227,8 +227,7 @@ public class SLib_DBLoader
 				strDate.append( ":" );
 				strDate.append( tDate.second );
 				curSMS.m_strDate = strDate.toString();
-				int nType = c.getInt(idx3);
-				if ( nType == 0 ) curSMS.m_Type = 1; else curSMS.m_Type = 2;
+				curSMS.m_Type = c.getInt(idx3);
 				curSMS.m_Text = c.getString(idx4);
 
 				cur.m_SMSList.add(curSMS);
@@ -247,7 +246,7 @@ public class SLib_DBLoader
 
 		// load android sms-addr-list
 		ArrayList<t_SlibAddrSMSs> aAddrSMSsList = new ArrayList<t_SlibAddrSMSs>();
-		c = db.rawQuery( "SELECT a_address, (CASE WHEN a_date_sent = 0 THEN a_date ELSE a_date_sent END) AS finaldate, a_type, a_body FROM t_sms WHERE sync_type = 2 AND isvalid = ? ORDER BY a_address", new String[] { "1" } );
+		c = db.rawQuery( "SELECT a_address, (CASE WHEN a_date_sent <= 1 THEN a_date ELSE a_date_sent END) AS finaldate, a_type, a_body FROM t_sms WHERE sync_type = 2 AND isvalid = ? ORDER BY a_address", new String[] { "1" } );
 		if ( c.getCount() > 0 )
 		{
 			int idx1 = c.getColumnIndex("a_address");
@@ -633,10 +632,14 @@ class SlibSMSComparator implements Comparator<t_SlibSMS>
     	{
     		return -1;
     	}
-    	else
+    	else if ( a.m_Date < b.m_Date )
     	{
     		return 1;
     	}
+    	else
+		{
+			return 0;
+		}
     }
 }
 
@@ -690,7 +693,7 @@ class t_SlibSMS
 {
 	long m_Date;
 	String m_strDate;
-	int m_Type;	// 1:in 2:out
+	int m_Type;	// 1:in 2:out 3:draft ...
 	String m_Text;
 }
 class t_SlibAddrSMSs

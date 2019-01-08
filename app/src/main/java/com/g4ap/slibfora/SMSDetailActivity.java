@@ -73,9 +73,13 @@ public class SMSDetailActivity extends Activity {
 			{
 				strText.append("<<<<====\r\n");
 			}
-			else
+			else if ( cur.m_Type == 2 )
 			{
 				strText.append("====>>>>\r\n");
+			}
+			else
+			{
+				strText.append("========\r\n");
 			}
 		
 			strText.append(cur.m_strDate);

@@ -27,11 +27,11 @@ def currentVersionCode = getVersionCode()
 def currentVersionName = getVersionName() + "(" + currentVersionCode + ")"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.g4ap.slibfora"
-        minSdkVersion 26
-        targetSdkVersion 28
+        minSdkVersion 29
+        targetSdkVersion 29
         versionCode currentVersionCode
         versionName currentVersionName
     }
@@ -43,6 +43,11 @@ android {
     }
     productFlavors {
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '30.0.3'
 
     android.applicationVariants.all { variant ->
         if ("release" == variant.buildType.name) {
@@ -55,5 +60,5 @@ android {
 }
 
 dependencies {
-    implementation  'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 }

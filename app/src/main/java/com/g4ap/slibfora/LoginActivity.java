@@ -3,8 +3,12 @@ package com.g4ap.slibfora;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
+import java.io.IOException;
 
 public class LoginActivity extends Activity
 {
@@ -21,6 +25,15 @@ public class LoginActivity extends Activity
 		
 		Button btnInitDB = (Button) findViewById(R.id.act_login_initdb);
 		btnInitDB.setOnClickListener(myAdapterBtnListener);
+
+		File Folder = new File(getExternalFilesDir(null), "locator");
+		try {
+			if ( !Folder.exists() ) {
+				Folder.createNewFile();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private View.OnClickListener myAdapterBtnListener = new View.OnClickListener()
@@ -33,6 +46,7 @@ public class LoginActivity extends Activity
 			case R.id.act_login_login:
 				if (bInit != 1096)
 				{
+					SLib.m_SLibDBPath = getExternalFilesDir(null) + "/SLib.ax";
 					SLib.getInstance().loadSlibDataFromDB();
 					bInit = 1096;
 				}

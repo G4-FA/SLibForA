@@ -1,11 +1,11 @@
 package com.g4ap.slibfora;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
-
-
+import android.os.Environment;
 
 
 public class SLib
@@ -13,6 +13,8 @@ public class SLib
 
 	public SLib()
 	{
+		//m_SLibDBPath = "SLib.ax";
+
 		m_SLibSync = new SLib_Sync();
 		m_SLibDBLoader = new SLib_DBLoader();
 		
@@ -97,9 +99,9 @@ public class SLib
 	private SLib_Sync m_SLibSync;
 	private SLib_DBLoader m_SLibDBLoader;
 	
-	
-	//String m_SLibDBPath = "data/data/com.g4ap.slibfora/files/slib.sqlite";
-	public static String m_SLibDBPath = "/sdcard/Download/SLib.ax";
+
+	//public static String m_SLibDBPath = "/sdcard/Download/SLib.ax";
+	public static String m_SLibDBPath = "SLib.ax";
 
 }
 

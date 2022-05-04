@@ -29,10 +29,9 @@ public class SLib_Sync {
 			c.moveToFirst();
 			String ret = c.getString( c.getColumnIndex("strdata") );
 			sys_sync_device = ret;
-			c.close();
-			db.close();
-			return;
 		}
+		c.close();
+		db.close();
 	}
 
 	// sync android callhis

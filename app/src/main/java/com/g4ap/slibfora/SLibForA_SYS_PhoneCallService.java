@@ -51,7 +51,7 @@ public class SLibForA_SYS_PhoneCallService extends Service
 			InCall(intent);
 			break;
 		case 3:
-			OutCall(intent);
+			//OutCall(intent);
 			break;
 		case 4:
 			CloseCall();
@@ -67,7 +67,7 @@ public class SLibForA_SYS_PhoneCallService extends Service
 		String tel = bundle.getString("tel");
 
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-		params.type = WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY;
+		params.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
 		params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 		params.width = WindowManager.LayoutParams.WRAP_CONTENT;
 		params.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -77,7 +77,8 @@ public class SLibForA_SYS_PhoneCallService extends Service
 		m_TextView.setText( SLib.getInstance().quaryAddrNameByTel(tel) + "   " + tel );
 		wm.addView(m_TextView, params);
 	}
-	
+
+	/*
 	public void OutCall( Intent intent )
 	{
 		WindowManager wm = (WindowManager)getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
@@ -85,7 +86,7 @@ public class SLibForA_SYS_PhoneCallService extends Service
 		String tel = bundle.getString("tel");
 
 		WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-		params.type = WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY;
+		params.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
 		params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 		params.width = WindowManager.LayoutParams.WRAP_CONTENT;
 		params.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -95,7 +96,7 @@ public class SLibForA_SYS_PhoneCallService extends Service
 		m_TextView.setText( SLib.getInstance().quaryAddrNameByTel(tel) + "   " + tel );
 		wm.addView(m_TextView, params);
 	}
-
+	*/
 
 	public void CloseCall()
 	{
@@ -104,6 +105,7 @@ public class SLibForA_SYS_PhoneCallService extends Service
         if( m_TextView != null )
         {
             wm.removeView(m_TextView);
+			m_TextView = null;
         }
 	}
 
